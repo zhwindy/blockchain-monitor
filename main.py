@@ -67,11 +67,12 @@ def get_newest_block(url):
         "id": 1
     }
     try:
-        res = requests.post(url, json=param, timeout=20)
+        res = requests.post(url, json=param, timeout=30)
         result = res.json()
         data = result.get("result", {})
     except Exception as e:
         data = {}
+    print(data)
     return data
 
 
