@@ -20,15 +20,21 @@ def start(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
+def eth(update: Update, context: CallbackContext):
+    url = "http://172.31.23.144:4000"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: ETH\n最新高度: {block_height}\n出块时间: {block_time}"""
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
 def bsc1(update: Update, context: CallbackContext):
     url = "http://10.0.0.112:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"""
-    最新高度: {block_height}
-    出块时间: {block_time}
-    """
+    text = f"节点: BSC-01\n最新高度: {block_height}\n出块时间: {block_time}"""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
@@ -37,10 +43,7 @@ def bsc2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"""
-    最新高度: {block_height}
-    出块时间: {block_time}
-    """
+    text = f"最新高度: {block_height}\n出块时间: {block_time}"""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
