@@ -16,7 +16,7 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2"
+    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2. \n If you have any questions, do not hesitate to let me know!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
@@ -48,7 +48,7 @@ def bsc2(update: Update, context: CallbackContext):
 
 
 start_handler = CommandHandler('start', start)
-eth_handler = CommandHandler('eth', start)
+eth_handler = CommandHandler('eth', eth)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
 
