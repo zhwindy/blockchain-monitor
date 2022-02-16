@@ -1,6 +1,7 @@
 # encoding=UTF-8
 import logging
 import requests
+from datetime import datetime
 from telegram.ext import Updater
 from telegram import Update
 from telegram.ext import CallbackContext
@@ -31,10 +32,22 @@ def bsc1(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
+def bsc2(update: Update, context: CallbackContext):
+    url = "http://10.0.0.172:8545"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"""
+    最新高度: {block_height}
+    出块时间: {block_time}
+    """
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
 start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', start)
 bsc1_handler = CommandHandler('bsc1', bsc1)
-bsc2_handler = CommandHandler('bsc2', start)
+bsc2_handler = CommandHandler('bsc2', bsc2)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(eth_handler)
@@ -60,14 +73,16 @@ def get_newest_block(url):
 
 def get_block_height(data):
     block_height = data.get("number", 1)
-    height = int(block_height)
+    height = int(block_height, base=16)
     return height
 
 
 def get_block_time(data):
-    time = data.get("timestamp")
-    timestamp = int(time)
-    return timestamp
+    time = data.get("timestamp", "1000000000")
+    timestamp = int(time, base=16)
+    date_time = datetime.fromtimestamp(timestamp)
+    time = date_time.strftime("%Y-%m-%d %H:%M:%S")
+    return time
 
 
 def main():
