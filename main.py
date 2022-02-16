@@ -15,7 +15,8 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id, text="I'm blockchain node info bot, please talk to me!")
+    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2"
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def bsc1(update: Update, context: CallbackContext):
@@ -34,7 +35,11 @@ start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', start)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', start)
+
 dispatcher.add_handler(start_handler)
+dispatcher.add_handler(eth_handler)
+dispatcher.add_handler(bsc1_handler)
+dispatcher.add_handler(bsc2_handler)
 
 
 def get_newest_block(url):
