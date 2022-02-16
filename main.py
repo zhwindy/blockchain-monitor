@@ -16,12 +16,13 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2. \n If you have any questions, do not hesitate to let me know!"
+    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2. \r\nIf you have any questions, do not hesitate to let me know!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def eth(update: Update, context: CallbackContext):
-    url = "http://172.31.23.144:4000"
+    # url = "http://172.31.23.144:4000"
+    url = "http://18.138.253.224:4000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
@@ -43,7 +44,7 @@ def bsc2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: BSC-02\n最新高度: {block_height}\n出块时间: {block_time}"""
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
