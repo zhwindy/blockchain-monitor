@@ -18,7 +18,7 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "Hello everyone, I'm Nftscan bot, please talk to me! \n\nIf you have any questions, do not hesitate to let me know!"
+    text = "Hello everyone I'm Nftscan bot, please talk to me. \n\nIf you have any questions, do not hesitate to let me know! \n\n More information visit: https://nftscan.com"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
@@ -63,6 +63,7 @@ bsc2_handler = CommandHandler('bsc2', bsc2)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(eth_handler)
+dispatcher.add_handler(bsc_handler)
 dispatcher.add_handler(bsc1_handler)
 dispatcher.add_handler(bsc2_handler)
 
