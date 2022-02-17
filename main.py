@@ -17,7 +17,7 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "I'm Nftscan node bot, support: eth bsc1 bsc2. \n\nIf you have any questions, do not hesitate to let me know!"
+    text = "Hello everyone, I'm Nftscan bot, please talk to me! \n\nIf you have any questions, do not hesitate to let me know!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
@@ -72,7 +72,6 @@ def get_newest_block(url):
         data = result.get("result", {})
     except Exception as e:
         data = {}
-    print(data)
     return data
 
 
