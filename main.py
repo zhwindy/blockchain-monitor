@@ -54,17 +54,28 @@ def bsc2(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
+def about(update: Update, context: CallbackContext):
+    text = "visit: https://nftscan.com/aboutus"
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
 start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', eth)
 bsc_handler = CommandHandler('bsc', bsc)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
+about_handler = CommandHandler('about', about)
+team_handler = CommandHandler('team', about)
+help_handler = CommandHandler('help', about)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(eth_handler)
 dispatcher.add_handler(bsc_handler)
 dispatcher.add_handler(bsc1_handler)
 dispatcher.add_handler(bsc2_handler)
+dispatcher.add_handler(about_handler)
+dispatcher.add_handler(team_handler)
+dispatcher.add_handler(help_handler)
 
 
 def get_newest_block(url):
