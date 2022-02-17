@@ -1,5 +1,6 @@
 # encoding=UTF-8
 import logging
+import time
 import requests
 import pytz
 from datetime import datetime
@@ -30,6 +31,12 @@ def eth(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
+def bsc(update: Update, context: CallbackContext):
+    bsc1(Update, CallbackContext)
+    time.sleep(0.1)
+    bsc2(Update, CallbackContext)
+
+
 def bsc1(update: Update, context: CallbackContext):
     url = "http://10.0.0.112:8545"
     node_data = get_newest_block(url)
@@ -50,6 +57,7 @@ def bsc2(update: Update, context: CallbackContext):
 
 start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', eth)
+bsc_handler = CommandHandler('bsc', bsc)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
 
