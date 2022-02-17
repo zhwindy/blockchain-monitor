@@ -1,6 +1,7 @@
 # encoding=UTF-8
 import logging
 import requests
+import pytz
 from datetime import datetime
 from telegram.ext import Updater
 from telegram import Update
@@ -16,13 +17,12 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "I'm blockchain node info bot, support command: eth bsc1 bsc2. \n\nIf you have any questions, do not hesitate to let me know!"
+    text = "I'm Nftscan node bot, support: eth bsc1 bsc2. \n\nIf you have any questions, do not hesitate to let me know!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def eth(update: Update, context: CallbackContext):
-    # url = "http://172.31.23.144:4000"
-    url = "http://18.138.253.224:4000"
+    url = "http://172.31.23.144:40000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
@@ -85,7 +85,7 @@ def get_block_height(data):
 def get_block_time(data):
     time = data.get("timestamp", "1000000000")
     timestamp = int(time, base=16)
-    date_time = datetime.fromtimestamp(timestamp)
+    date_time = datetime.fromtimestamp(timestamp, pytz.timezone('Asia/Shanghai'))
     time = date_time.strftime("%Y-%m-%d %H:%M:%S")
     return time
 
