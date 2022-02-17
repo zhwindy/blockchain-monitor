@@ -32,9 +32,8 @@ def eth(update: Update, context: CallbackContext):
 
 
 def bsc(update: Update, context: CallbackContext):
-    bsc1(Update, CallbackContext)
-    time.sleep(0.1)
-    bsc2(Update, CallbackContext)
+    text = "请使用命令: /bsc1 or /bsc2"
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def bsc1(update: Update, context: CallbackContext):
