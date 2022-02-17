@@ -8,6 +8,7 @@ from telegram.ext import Updater
 from telegram import Update
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
+from telegram.ext import MessageHandler, Filters
 
 
 logging.basicConfig(format='%(asctime)s-%(name)s-%(levelname)s-%(message)s', level=logging.INFO)
@@ -59,6 +60,11 @@ def about(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
+def unknown(update: Update, context: CallbackContext):
+    text = "Sorry, I didn't understand that command. Please wait..."
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
 start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', eth)
 bsc_handler = CommandHandler('bsc', bsc)
@@ -67,6 +73,7 @@ bsc2_handler = CommandHandler('bsc2', bsc2)
 about_handler = CommandHandler('about', about)
 team_handler = CommandHandler('team', about)
 help_handler = CommandHandler('help', about)
+unknown_handler = MessageHandler(Filters.command, unknown)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(eth_handler)
@@ -76,6 +83,7 @@ dispatcher.add_handler(bsc2_handler)
 dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
 dispatcher.add_handler(help_handler)
+dispatcher.add_handler(unknown_handler)
 
 
 def get_newest_block(url):
