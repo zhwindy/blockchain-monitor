@@ -18,7 +18,7 @@ dispatcher = updater.dispatcher
 
 
 def start(update: Update, context: CallbackContext):
-    text = "Hello everyone I'm Nftscan bot, please talk to me. \n\nIf you have any questions, do not hesitate to let me know! \n\n More information visit: https://nftscan.com"
+    text = "Hello everyone I'm Nftscan bot, happy to serve all. \n\nIf you have any questions, do not hesitate to let me know! \n\nMore information visit: https://nftscan.com"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
