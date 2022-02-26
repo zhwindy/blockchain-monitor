@@ -3,6 +3,7 @@ import logging
 import time
 import requests
 import pytz
+from settings import config
 from datetime import datetime
 from telegram.ext import Updater
 from telegram import Update
@@ -13,7 +14,6 @@ from telegram.ext import MessageHandler, Filters
 
 logging.basicConfig(format='%(asctime)s-%(name)s-%(levelname)s-%(message)s', level=logging.INFO)
 
-TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
