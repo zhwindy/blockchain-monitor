@@ -30,7 +30,8 @@ def eth(update: Update, context: CallbackContext):
     block_time = get_block_time(node_data)
     text = f"节点: ETH\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
-    logging.info(chat_id, text)
+    logging.info(chat_id)
+    logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
@@ -46,7 +47,8 @@ def bsc1(update: Update, context: CallbackContext):
     block_time = get_block_time(node_data)
     text = f"节点: BSC-01\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
-    logging.info(chat_id, text)
+    logging.info(chat_id)
+    logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
@@ -57,7 +59,8 @@ def bsc2(update: Update, context: CallbackContext):
     block_time = get_block_time(node_data)
     text = f"节点: BSC-02\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
-    logging.info(chat_id, text)
+    logging.info(chat_id)
+    logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
