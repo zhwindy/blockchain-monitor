@@ -95,7 +95,7 @@ def bsc_monitor():
     if mode == 'dev':
         print(text)
         return None
-    if int(diff_min) > 10:
+    if int(diff_min) > 5:
         bot = telegram.Bot(token=token)
         bot.send_message(text=text, chat_id=group_id)
 
