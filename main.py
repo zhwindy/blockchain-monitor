@@ -11,8 +11,10 @@ from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 
-
 logging.basicConfig(format='%(asctime)s-%(name)s-%(levelname)s-%(message)s', level=logging.INFO)
+
+
+TOKEN = config.get("token")
 
 updater = Updater(token=TOKEN, use_context=True)
 dispatcher = updater.dispatcher
