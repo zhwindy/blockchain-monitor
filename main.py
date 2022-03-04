@@ -26,11 +26,27 @@ def start(update: Update, context: CallbackContext):
 
 
 def eth(update: Update, context: CallbackContext):
+    text = "请使用命令: /eth1 or /eth2"
+    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
+def eth1(update: Update, context: CallbackContext):
     url = "http://172.31.23.144:40000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: ETH\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: ETH-01\nIP: 172.xxx.xxx.144\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def eth2(update: Update, context: CallbackContext):
+    url = "http://172.31.31.186:40000"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: ETH-02\nIP: 172.xxx.xxx.186\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -46,7 +62,7 @@ def bsc1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: BSC-01\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: BSC-01\nIP: 10.xxx.xxx.112\n最新高度: {block_height}\n出块时间: {block_time}"""
     # logging.info(update.effective_chat)
     chat_id = update.effective_chat.id
     logging.info(text)
@@ -58,7 +74,7 @@ def bsc2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: BSC-02\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: BSC-02\nIP: 10.xxx.xxx.172\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -76,6 +92,8 @@ def unknown(update: Update, context: CallbackContext):
 
 start_handler = CommandHandler('start', start)
 eth_handler = CommandHandler('eth', eth)
+eth1_handler = CommandHandler('eth1', eth1)
+eth2_handler = CommandHandler('eth2', eth2)
 bsc_handler = CommandHandler('bsc', bsc)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
@@ -86,6 +104,8 @@ unknown_handler = MessageHandler(Filters.command, unknown)
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(eth_handler)
+dispatcher.add_handler(eth1_handler)
+dispatcher.add_handler(eth2_handler)
 dispatcher.add_handler(bsc_handler)
 dispatcher.add_handler(bsc1_handler)
 dispatcher.add_handler(bsc2_handler)
