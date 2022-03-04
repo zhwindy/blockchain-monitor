@@ -74,10 +74,12 @@ def eth_monitor():
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【解析延迟告警】主链:ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请核实相关情况, 及时处理!"
+    now = str(datetime.datetime.now())
     if mode == 'dev':
-        print(text)
+        print(now, text)
         return None
     if int(diff_min) > 10:
+        print(now, text)
         bot = telegram.Bot(token=token)
         bot.send_message(text=text, chat_id=group_id)
 
@@ -92,10 +94,12 @@ def bsc_monitor():
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【解析延迟告警】主链:BNB\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请核实相关情况, 及时处理!"
+    now = str(datetime.datetime.now())
     if mode == 'dev':
-        print(text)
+        print(now, text)
         return None
     if int(diff_min) > 10:
+        print(now, text)
         bot = telegram.Bot(token=token)
         bot.send_message(text=text, chat_id=group_id)
 
