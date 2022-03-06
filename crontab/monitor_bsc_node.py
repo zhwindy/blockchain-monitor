@@ -64,7 +64,7 @@ def main():
             content = f"monitor节点: {key}\n最新高度: {block_height}\n出块时间: {block_time}"""
         except Exception as e:
             content = str(e)
-        print(content)
+        # print(content)
         send_news(content)
 
 
