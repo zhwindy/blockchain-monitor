@@ -58,7 +58,11 @@ def main():
         except Exception as e:
             result = {}
         if result:
-            redis_client.lpush(redis_key, json.dumps(result))
+            if redis_client.get(str(height)):
+                continue
+            rt = redis_client.lpush(redis_key, json.dumps(result))
+            if rt:
+                redis_client.set(str(height), ex=15)
             redis_key_len = redis_client.llen(redis_key)
             if redis_key_len > 200:
                 redis_client.ltrim(redis_key, 0, 200)
