@@ -62,7 +62,7 @@ def main():
                 continue
             rt = redis_client.lpush(redis_key, json.dumps(result))
             if rt:
-                redis_client.set(str(height), 1, ex=15)
+                redis_client.set(str(height), 1, ex=60)
             redis_key_len = redis_client.llen(redis_key)
             if redis_key_len > 200:
                 redis_client.ltrim(redis_key, 0, 200)
