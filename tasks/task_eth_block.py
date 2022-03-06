@@ -8,7 +8,7 @@ node_url = "http://172.31.23.144:40000"
 
 redis_key = "eth_delay_0_info"
 
-redis_client= redis.Redis(host='127.0.0.1', port=6379)
+redis_client = redis.Redis(host='127.0.0.1', port=6379)
 
 
 def get_newest_block(url):
@@ -51,10 +51,10 @@ def main():
             data = get_newest_block(node_url)
             height = get_block_height(data)
             hash = get_block_hash(data)
-            time = get_block_time(data)
+            block_time = get_block_time(data)
             result['height'] = height
             result['hash'] = hash
-            result['time'] = time
+            result['time'] = block_time
         except Exception as e:
             result = {}
         if result:
