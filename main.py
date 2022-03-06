@@ -35,7 +35,7 @@ def eth1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: ETH-01\nIP地址: 172.xxx.xxx.144\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-01\nip地址: 172.*.*.144\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -46,7 +46,7 @@ def eth2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: ETH-02\nIP地址: 172.xxx.xxx.186\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-02\nip地址: 172.*.*.186\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -62,7 +62,7 @@ def bsc1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: BSC-01\nIP地址: 10.xxx.xxx.112\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-01\nip地址: 10.*.*.112\n最新高度: {block_height}\n出块时间: {block_time}"""
     # logging.info(update.effective_chat)
     chat_id = update.effective_chat.id
     logging.info(text)
@@ -74,7 +74,7 @@ def bsc2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: BSC-02\nIP地址: 10.xxx.xxx.172\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-02\nip地址: 10.*.*.172\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
