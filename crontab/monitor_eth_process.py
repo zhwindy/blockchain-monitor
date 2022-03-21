@@ -45,7 +45,7 @@ def eth_monitor():
     record_timestamp = int(record_time.replace(tzinfo=pytz.timezone('Asia/Shanghai')).timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【解析延迟告警】主链:ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请核实相关情况, 及时处理!"
+    text =f"【解析延迟告警】主链:ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请及时关注处理!"
     now = str(datetime.datetime.now())
     print(now, text)
     if MODE == 'dev':
