@@ -6,7 +6,7 @@ import telegram
 import os
 import pytz
 
-MODE = 'pro'
+MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 HOST = os.getenv('NFT_MYSQL_HOST')
 USER = os.getenv('NFT_MYSQL_USER')
 PASSWD = os.getenv('NFT_MYSQL_PASSWD')
@@ -48,11 +48,11 @@ def eth_monitor():
     text =f"【解析延迟告警】主链:ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请核实相关情况, 及时处理!"
     now = str(datetime.datetime.now())
     print(now, text)
-    if mode == 'dev':
+    if MODE == 'dev':
         return None
     if int(diff_min) > 10:
-        bot = telegram.Bot(token=token)
-        bot.send_message(text=text, chat_id=group_id)
+        bot = telegram.Bot(token=TOKEN)
+        bot.send_message(text=text, chat_id=GROUP_ID)
 
 
 if __name__ == "__main__":

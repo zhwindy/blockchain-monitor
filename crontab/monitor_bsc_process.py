@@ -6,7 +6,7 @@ import telegram
 import os
 import pytz
 
-MODE = 'pro'
+MODE = os.getenv('NFT_MONITOR_MODE', 'DEV')
 HOST = os.getenv('NFT_MYSQL_HOST')
 USER = os.getenv('NFT_MYSQL_USER')
 PASSWD = os.getenv('NFT_MYSQL_PASSWD')
@@ -16,7 +16,7 @@ TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 
 def get_bsc_data():
     database = "bsc_data"
-    conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=DATABASE, charset='utf8')
+    conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
     cursor = conn.cursor()
     sql = "select block_number,create_time from bsc_source_block order by block_number desc limit 1"
     info = {
@@ -48,11 +48,11 @@ def bsc_monitor():
     text =f"【解析延迟告警】主链:BNB\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请核实相关情况, 及时处理!"
     now = str(datetime.datetime.now())
     print(now, text)
-    if mode == 'dev':
+    if MODE == 'dev':
         return None
     if int(diff_min) > 10:
-        bot = telegram.Bot(token=token)
-        bot.send_message(text=text, chat_id=group_id)
+        bot = telegram.Bot(token=TOKEN)
+        bot.send_message(text=text, chat_id=GROUP_ID)
 
 
 if __name__ == "__main__":
