@@ -18,11 +18,10 @@ token = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 def get_eth_data():
     user = os.getenv('NFT_MYSQL_USER')
     passwd = os.getenv('NFT_MYSQL_PASSWD')
-    conn = pymysql.connect(host=host, user=user, passwd=passwd, db='eth_source', charset='utf8')
+    database = "eth_data"
+    conn = pymysql.connect(host=host, user=user, passwd=passwd, db=database, charset='utf8')
     cursor = conn.cursor()
-    sql = """
-        select block_number,create_time from eth_source_block order by block_number desc limit 1
-    """
+    sql = "select block_number,create_time from eth_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
@@ -43,11 +42,10 @@ def get_eth_data():
 def get_bsc_data():
     user = os.getenv('NFT_MYSQL_USER')
     passwd = os.getenv('NFT_MYSQL_PASSWD')
-    conn = pymysql.connect(host=host, user=user, passwd=passwd, db='bsc_source', charset='utf8')
+    database = "bsc_data"
+    conn = pymysql.connect(host=host, user=user, passwd=passwd, db=database, charset='utf8')
     cursor = conn.cursor()
-    sql = """
-        select block_number,create_time from bsc_source_block order by block_number desc limit 1
-    """
+    sql = "select block_number,create_time from bsc_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
