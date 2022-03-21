@@ -12,6 +12,8 @@ USER = os.getenv('NFT_MYSQL_USER')
 PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
+# 报警阈值
+THRESHOLD = 5
 
 
 def get_bsc_data():
@@ -41,9 +43,9 @@ def bsc_monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    print(record_time)
     # record_timestamp = int(datetime.datetime.timestamp(record_time))
     # record_timestamp = int(record_time.replace(tzinfo=pytz.timezone('Asia/Shanghai')).timestamp())
+    record_timestamp = int(str(record_time), base=16)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【解析延迟告警】主链:BNB\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请及时关注处理!"
@@ -51,10 +53,9 @@ def bsc_monitor():
     print(now, text)
     if MODE == 'dev':
         return None
-    if int(diff_min) > 10:
-        # bot = telegram.Bot(token=TOKEN)
-        pass
-        # bot.send_message(text=text, chat_id=GROUP_ID)
+    if int(diff_min) > THRESHOLD:
+        bot = telegram.Bot(token=TOKEN)
+        bot.send_message(text=text, chat_id=GROUP_ID)
 
 
 if __name__ == "__main__":
