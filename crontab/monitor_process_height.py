@@ -8,7 +8,8 @@ import pytz
 
 mode = 'pro'
 
-host = "nftscan-source-db-instance-1.cjotu4lyzmfi.ap-southeast-1.rds.amazonaws.com"
+# host = "nftscan-source-db-instance-1.cjotu4lyzmfi.ap-southeast-1.rds.amazonaws.com"
+host = "nftscan-data-db-instance-1.cjotu4lyzmfi.ap-southeast-1.rds.amazonaws.com"
 
 group_id = "-533453366"
 token = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
