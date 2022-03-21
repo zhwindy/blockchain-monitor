@@ -18,7 +18,7 @@ def get_bsc_data():
     database = "bsc_data"
     conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
     cursor = conn.cursor()
-    sql = "select block_number,create_time from bsc_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from bsc_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
@@ -41,8 +41,9 @@ def bsc_monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
+    print(record_time)
     # record_timestamp = int(datetime.datetime.timestamp(record_time))
-    record_timestamp = int(record_time.replace(tzinfo=pytz.timezone('Asia/Shanghai')).timestamp())
+    # record_timestamp = int(record_time.replace(tzinfo=pytz.timezone('Asia/Shanghai')).timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【解析延迟告警】主链:BNB\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请及时关注处理!"
@@ -51,8 +52,9 @@ def bsc_monitor():
     if MODE == 'dev':
         return None
     if int(diff_min) > 10:
-        bot = telegram.Bot(token=TOKEN)
-        bot.send_message(text=text, chat_id=GROUP_ID)
+        # bot = telegram.Bot(token=TOKEN)
+        pass
+        # bot.send_message(text=text, chat_id=GROUP_ID)
 
 
 if __name__ == "__main__":
