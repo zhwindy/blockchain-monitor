@@ -4,7 +4,7 @@ import pytz
 from datetime import datetime
 
 node_list = {
-    "bnb-node-01": "http://10.0.0.112:8545",
+    "bnb-node-01": "http://10.0.0.139:8545",
     "bnb-node-02": "http://10.0.0.172:8545",
 }
 
