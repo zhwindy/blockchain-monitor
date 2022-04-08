@@ -58,11 +58,11 @@ def bsc(update: Update, context: CallbackContext):
 
 
 def bsc1(update: Update, context: CallbackContext):
-    url = "http://10.0.0.112:8545"
+    url = "http://10.0.0.139:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: bnb-node-01\nip地址: 10.*.*.112\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-01\nip地址: 10.*.*.139\n最新高度: {block_height}\n出块时间: {block_time}"""
     # logging.info(update.effective_chat)
     chat_id = update.effective_chat.id
     logging.info(text)
@@ -75,6 +75,17 @@ def bsc2(update: Update, context: CallbackContext):
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
     text = f"节点: bnb-node-02\nip地址: 10.*.*.172\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def moonbeam(update: Update, context: CallbackContext):
+    url = "http://172.31.23.220:30335"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: moonbeam-node\nip地址: 172.*.*.220\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -97,6 +108,7 @@ eth2_handler = CommandHandler('eth2', eth2)
 bsc_handler = CommandHandler('bsc', bsc)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
+moonbeam_handler = CommandHandler('moonbeam', moonbeam)
 about_handler = CommandHandler('about', about)
 team_handler = CommandHandler('team', about)
 help_handler = CommandHandler('help', about)
@@ -109,6 +121,7 @@ dispatcher.add_handler(eth2_handler)
 dispatcher.add_handler(bsc_handler)
 dispatcher.add_handler(bsc1_handler)
 dispatcher.add_handler(bsc2_handler)
+dispatcher.add_handler(moonbeam_handler)
 dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
 dispatcher.add_handler(help_handler)
