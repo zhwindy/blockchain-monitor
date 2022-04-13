@@ -5,7 +5,7 @@ from datetime import datetime
 
 node_list = {
     "bnb-node-01": "http://10.0.0.139:8545",
-    "bnb-node-02": "http://10.0.0.172:8545",
+    "bnb-node-02": "http://10.0.0.99:8545",
 }
 
 def send_news(content):

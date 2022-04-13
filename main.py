@@ -70,7 +70,7 @@ def bsc1(update: Update, context: CallbackContext):
 
 
 def bsc2(update: Update, context: CallbackContext):
-    url = "http://10.0.0.172:8545"
+    url = "http://10.0.0.99:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
