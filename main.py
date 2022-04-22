@@ -130,6 +130,8 @@ eth2_handler = CommandHandler('eth2', eth2)
 bsc_handler = CommandHandler('bsc', bsc)
 bsc1_handler = CommandHandler('bsc1', bsc1)
 bsc2_handler = CommandHandler('bsc2', bsc2)
+polygon1_handler = CommandHandler('polygon1', bsc1)
+polygon2_handler = CommandHandler('polygon2', bsc2)
 moonbeam_handler = CommandHandler('moonbeam', moonbeam)
 about_handler = CommandHandler('about', about)
 team_handler = CommandHandler('team', about)
@@ -143,6 +145,8 @@ dispatcher.add_handler(eth2_handler)
 dispatcher.add_handler(bsc_handler)
 dispatcher.add_handler(bsc1_handler)
 dispatcher.add_handler(bsc2_handler)
+dispatcher.add_handler(polygon1_handler)
+dispatcher.add_handler(polygon2_handler)
 dispatcher.add_handler(moonbeam_handler)
 dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
@@ -150,7 +154,7 @@ dispatcher.add_handler(help_handler)
 dispatcher.add_handler(unknown_handler)
 
 
-def get_newest_block(url: object) -> object:
+def get_newest_block(url):
     param = {
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
