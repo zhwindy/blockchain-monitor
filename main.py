@@ -80,6 +80,28 @@ def bsc2(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def polygon1(update: Update, context: CallbackContext):
+    url = "http://172.31.28.220:8545"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: polygon-node-01\nip地址: 172.31.28.220\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def polygon2(update: Update, context: CallbackContext):
+    url = "http://172.31.30.198:8545"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: polygon-node-02\nip地址: 172.31.30.198\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def moonbeam(update: Update, context: CallbackContext):
     url = "http://172.31.23.220:30335"
     node_data = get_newest_block(url)
@@ -128,7 +150,7 @@ dispatcher.add_handler(help_handler)
 dispatcher.add_handler(unknown_handler)
 
 
-def get_newest_block(url):
+def get_newest_block(url: object) -> object:
     param = {
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
@@ -136,7 +158,7 @@ def get_newest_block(url):
         "id": 1
     }
     try:
-        res = requests.post(url, json=param, timeout=30)
+        res = requests.post(url, json=param, timeout=20)
         result = res.json()
         data = result.get("result", {})
     except Exception as e:
