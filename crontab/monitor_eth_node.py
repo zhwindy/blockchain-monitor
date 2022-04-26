@@ -5,7 +5,8 @@ from datetime import datetime
 
 node_list = {
     "eth-node-01": "http://172.31.23.144:40000",
-    "eth-node-02": "http://172.31.31.186:40000",
+    # "eth-node-02": "http://172.31.31.186:40000",
+    "eth-node-02": "http://172.31.25.134:40000",
 }
 
 def send_news(content):
