@@ -1,14 +1,11 @@
 # encoding=utf-8
 import requests
-import pytz
 from datetime import datetime
 
-node_list = {
-    "eth-node-01": "http://172.31.23.144:40000",
-    "eth-node-02": "http://172.31.25.134:40000",
-}
+DingDing = "https://oapi.dingtalk.com/robot/send?access_token={token}"
 
-def send_news(content):
+
+def send_news(content, token="601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9a6b473397b0bd3"):
     """
     发送通知
     """
@@ -21,7 +18,7 @@ def send_news(content):
         },
         "msgtype": "text"
     }
-    url = "https://oapi.dingtalk.com/robot/send?access_token=601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9a6b473397b0bd3"
+    url = DingDing.format(token=token)
     requests.post(url=url, json=message)
 
 
@@ -53,20 +50,3 @@ def get_block_time(data):
     date_time = datetime.fromtimestamp(timestamp, pytz.timezone('Asia/Shanghai'))
     time = date_time.strftime("%Y-%m-%d %H:%M:%S")
     return time
-
-
-def main():
-    for key, url in node_list.items():
-        try:
-            node_data = get_newest_block(url)
-            block_height = get_block_height(node_data)
-            block_time = get_block_time(node_data)
-            content = f"monitor节点: {key}\n最新高度: {block_height}\n出块时间: {block_time}"""
-        except Exception as e:
-            content = str(e)
-        print(content)
-        send_news(content)
-
-
-if __name__ == '__main__':
-    main()
