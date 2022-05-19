@@ -20,7 +20,7 @@ def get_data():
     database = "pls_data"
     conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from bsc_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from pls_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
