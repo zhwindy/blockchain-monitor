@@ -13,7 +13,7 @@ PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 # 报警阈值
-THRESHOLD = 5
+THRESHOLD = 10
 
 
 def get_data():
