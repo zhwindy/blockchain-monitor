@@ -114,6 +114,17 @@ def moonbeam(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def arbitrum(update: Update, context: CallbackContext):
+    url = "http://172.31.27.235:8547"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: Arbitrum-node\nip地址: 172.31.27.235\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def about(update: Update, context: CallbackContext):
     text = "visit: https://nftscan.com/aboutus"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
@@ -134,6 +145,7 @@ bsc2_handler = CommandHandler('bsc2', bsc2)
 polygon1_handler = CommandHandler('polygon1', polygon1)
 polygon2_handler = CommandHandler('polygon2', polygon2)
 moonbeam_handler = CommandHandler('moonbeam', moonbeam)
+arbitrum_handler = CommandHandler('arbitrum', arbitrum)
 about_handler = CommandHandler('about', about)
 team_handler = CommandHandler('team', about)
 help_handler = CommandHandler('help', about)
@@ -149,6 +161,7 @@ dispatcher.add_handler(bsc2_handler)
 dispatcher.add_handler(polygon1_handler)
 dispatcher.add_handler(polygon2_handler)
 dispatcher.add_handler(moonbeam_handler)
+dispatcher.add_handler(arbitrum_handler)
 dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
 dispatcher.add_handler(help_handler)
