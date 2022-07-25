@@ -163,7 +163,7 @@ def about(update: Update, context: CallbackContext):
 
 
 def unknown(update: Update, context: CallbackContext):
-    text = "Sorry, I didn't understand that command. Please wait..."
+    text = "Sorry, I didn't understand that command."
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
