@@ -125,6 +125,39 @@ def arbitrum(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def avax(update: Update, context: CallbackContext):
+    url = "http://avax-node-01-internal.nftscan.com:9650/ext/bc/C/rpc"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: Avax-node\nip地址: 172.31.19.238\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def opt(update: Update, context: CallbackContext):
+    url = "http://opt-node-01-internal.nftscan.com:9991"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: opt-node\nip地址: 172.31.18.109\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def platon(update: Update, context: CallbackContext):
+    url = "http://platon-node-01-internal.nftscan.com:8545"
+    node_data = get_newest_block(url)
+    block_height = get_block_height(node_data)
+    block_time = get_block_time(node_data)
+    text = f"节点: PlatON-node\nip地址: 172.31.19.145\n最新高度: {block_height}\n出块时间: {block_time}"""
+    chat_id = update.effective_chat.id
+    logging.info(text)
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def about(update: Update, context: CallbackContext):
     text = "visit: https://nftscan.com/aboutus"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
@@ -146,6 +179,9 @@ polygon1_handler = CommandHandler('polygon1', polygon1)
 polygon2_handler = CommandHandler('polygon2', polygon2)
 moonbeam_handler = CommandHandler('moonbeam', moonbeam)
 arbitrum_handler = CommandHandler('arbitrum', arbitrum)
+avax_handler = CommandHandler('avax', avax)
+opt_handler = CommandHandler('opt', opt)
+platon_handler = CommandHandler('platon', platon)
 about_handler = CommandHandler('about', about)
 team_handler = CommandHandler('team', about)
 help_handler = CommandHandler('help', about)
@@ -162,6 +198,9 @@ dispatcher.add_handler(polygon1_handler)
 dispatcher.add_handler(polygon2_handler)
 dispatcher.add_handler(moonbeam_handler)
 dispatcher.add_handler(arbitrum_handler)
+dispatcher.add_handler(avax_handler)
+dispatcher.add_handler(opt_handler)
+dispatcher.add_handler(platon_handler)
 dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
 dispatcher.add_handler(help_handler)
