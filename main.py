@@ -42,7 +42,6 @@ def eth1(update: Update, context: CallbackContext):
 
 
 def eth2(update: Update, context: CallbackContext):
-    # url = "http://172.31.31.186:40000"
     url = "http://172.31.25.134:40000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
@@ -179,6 +178,7 @@ polygon1_handler = CommandHandler('polygon1', polygon1)
 polygon2_handler = CommandHandler('polygon2', polygon2)
 moonbeam_handler = CommandHandler('moonbeam', moonbeam)
 arbitrum_handler = CommandHandler('arbitrum', arbitrum)
+arbi_handler = CommandHandler('arbi', arbitrum)
 avax_handler = CommandHandler('avax', avax)
 opt_handler = CommandHandler('opt', opt)
 platon_handler = CommandHandler('platon', platon)
@@ -198,6 +198,7 @@ dispatcher.add_handler(polygon1_handler)
 dispatcher.add_handler(polygon2_handler)
 dispatcher.add_handler(moonbeam_handler)
 dispatcher.add_handler(arbitrum_handler)
+dispatcher.add_handler(arbi_handler)
 dispatcher.add_handler(avax_handler)
 dispatcher.add_handler(opt_handler)
 dispatcher.add_handler(platon_handler)
