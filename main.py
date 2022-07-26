@@ -47,7 +47,7 @@ def keyboard_callback(update: Update, context: CallbackContext):
     call_data = query.data
     query.answer()
     query.edit_message_text(text=f"查询的节点是:{call_data}")
-    if call_data == "eth1":
+    if call_data == "eth-node-01":
         eth1(update, context)
     else:
         eth2(update, context)
