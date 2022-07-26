@@ -31,8 +31,8 @@ def eth(update: Update, context: CallbackContext):
     """
     keyboard = [
         [
-            InlineKeyboardButton("eth-node-1", callback_data='1'),
-            InlineKeyboardButton("eth-node-2", callback_data='2'),
+            InlineKeyboardButton("eth-node-1", callback_data='/eth1'),
+            InlineKeyboardButton("eth-node-2", callback_data='/eth2'),
         ],
         # [
         #     InlineKeyboardButton("eth-", callback_data='3'),
@@ -46,7 +46,7 @@ def eth(update: Update, context: CallbackContext):
 def keyboard_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
-    query.edit_message_text(text=f"Selected option: {query.data}")
+    query.edit_message_text(text=f"{query.data}")
 
 
 def eth1(update: Update, context: CallbackContext):
