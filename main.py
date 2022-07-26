@@ -31,8 +31,8 @@ def eth(update: Update, context: CallbackContext):
     """
     keyboard = [
         [
-            InlineKeyboardButton("eth-node-01", callback_data='eth1'),
-            InlineKeyboardButton("eth-node-02", callback_data='eth2'),
+            InlineKeyboardButton("eth-node-01", callback_data='eth-node-01'),
+            InlineKeyboardButton("eth-node-02", callback_data='eth-node-02'),
         ],
         # [
         #     InlineKeyboardButton("eth-", callback_data='3'),
@@ -44,9 +44,9 @@ def eth(update: Update, context: CallbackContext):
 
 def keyboard_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    query.answer()
-    query.edit_message_text(text="")
     call_data = query.data
+    query.answer()
+    query.edit_message_text(text=f"查询的节点是:{call_data}")
     if call_data == "eth1":
         eth1(update, context)
     else:
