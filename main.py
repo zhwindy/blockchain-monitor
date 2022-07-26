@@ -46,11 +46,11 @@ def eth(update: Update, context: CallbackContext):
 def keyboard_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
-    call_data = query.data
-    if call_data == "eth1":
-        eth1(update, context)
-    else:
-        eth2(update, context)
+    # call_data = query.data
+    # if call_data == "eth1":
+    #     eth1(update, context)
+    # else:
+    #     eth2(update, context)
     # query.edit_message_text(text=f"{}")
 
 
