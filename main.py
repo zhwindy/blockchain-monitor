@@ -40,18 +40,17 @@ def eth(update: Update, context: CallbackContext):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.message.reply_text("选择要查询的节点:", reply_markup=reply_markup)
-    # context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
 def keyboard_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     query.answer()
-    # call_data = query.data
+    call_data = query.data
     # if call_data == "eth1":
     #     eth1(update, context)
     # else:
     #     eth2(update, context)
-    # query.edit_message_text(text=f"{}")
+    query.edit_message_text(text=f"{call_data}")
 
 
 def eth1(update: Update, context: CallbackContext):
