@@ -5,9 +5,9 @@ import requests
 import pytz
 from settings import config
 from datetime import datetime
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater
-from telegram import Update
-from telegram.ext import CallbackContext
+from telegram.ext import CallbackContext, CallbackQueryHandler
 from telegram.ext import CommandHandler
 from telegram.ext import MessageHandler, Filters
 
@@ -26,8 +26,27 @@ def start(update: Update, context: CallbackContext):
 
 
 def eth(update: Update, context: CallbackContext):
-    text = "请使用命令: /eth1 or /eth2"
-    context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+    """
+    请使用命令: /eth1 or /eth2
+    """
+    keyboard = [
+        [
+            InlineKeyboardButton("eth-node-1", callback_data='1'),
+            InlineKeyboardButton("eth-node-2", callback_data='2'),
+        ],
+        # [
+        #     InlineKeyboardButton("eth-", callback_data='3'),
+        # ]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.message.reply_text("选择要查询的节点:", reply_markup=reply_markup)
+    # context.bot.send_message(chat_id=update.effective_chat.id, text=text)
+
+
+def keyboard_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    query.answer()
+    query.edit_message_text(text=f"Selected option: {query.data}")
 
 
 def eth1(update: Update, context: CallbackContext):
@@ -206,6 +225,7 @@ dispatcher.add_handler(about_handler)
 dispatcher.add_handler(team_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(unknown_handler)
+dispatcher.add_handler(CallbackQueryHandler(keyboard_callback))
 
 
 def get_newest_block(url):
