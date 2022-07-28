@@ -54,22 +54,22 @@ def keyboard_callback(update: Update, context: CallbackContext):
 
 
 def eth1(update: Update, context: CallbackContext):
-    url = "http://172.31.23.144:40000"
+    url = "http://eth-node-01-internal.nftscan.com:40000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: eth-node-01\nip地址: 172.31.23.144\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-01\n地址:eth-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def eth2(update: Update, context: CallbackContext):
-    url = "http://172.31.25.134:40000"
+    url = "http://eth-node-02-internal.nftscan.com:40000"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: eth-node-02\nip地址: 172.31.25.134\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-02\n地址:eth-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -81,67 +81,66 @@ def bsc(update: Update, context: CallbackContext):
 
 
 def bsc1(update: Update, context: CallbackContext):
-    url = "http://10.0.0.139:8545"
+    url = "http://bsc-node-01-internal.nftscan.com:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: bnb-node-01\nip地址: 10.0.0.139\n最新高度: {block_height}\n出块时间: {block_time}"""
-    # logging.info(update.effective_chat)
+    text = f"节点: bnb-node-01\n地址:bsc-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def bsc2(update: Update, context: CallbackContext):
-    url = "http://10.0.0.99:8545"
+    url = "http://bsc-node-02-internal.nftscan.com:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: bnb-node-02\nip地址: 10.0.0.99\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-02\n地址:bsc-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def polygon1(update: Update, context: CallbackContext):
-    url = "http://172.31.28.220:8545"
+    url = "http://polygon-node-01-internal.nftscan.com:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: polygon-node-01\nip地址: 172.31.28.220\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: polygon-node-01\n地址:polygon-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def polygon2(update: Update, context: CallbackContext):
-    url = "http://172.31.30.198:8545"
+    url = "http://polygon-node-02-internal.nftscan.com:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: polygon-node-02\nip地址: 172.31.30.198\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: polygon-node-02\n地址:polygon-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def moonbeam(update: Update, context: CallbackContext):
-    url = "http://172.31.23.220:30335"
+    url = "http://moonbeam-node-internal.nftscan.com:30335"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: moonbeam-node\nip地址: 172.31.23.220\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: moonbeam-node\n地址:moonbeam-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def arbitrum(update: Update, context: CallbackContext):
-    url = "http://172.31.27.235:8547"
+    url = "http://arbitrum-node-internal.nftscan.com:8547"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: Arbitrum-node\nip地址: 172.31.27.235\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: Arbitrum-node\n地址:arbitrum-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -152,29 +151,29 @@ def avax(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: Avax-node\nip地址: 172.31.19.238\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: Avax-node\n地址:avax-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def opt(update: Update, context: CallbackContext):
-    url = "http://opt-node-01-internal.nftscan.com:9991"
+    url = "http://opt-node-internal.nftscan.com:9991"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: opt-node\nip地址: 172.31.18.109\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: opt-node\n地址:opt-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def platon(update: Update, context: CallbackContext):
-    url = "http://platon-node-01-internal.nftscan.com:8545"
+    url = "http://platon-node-internal.nftscan.com:8545"
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: PlatON-node\nip地址: 172.31.19.145\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: PlatON-node\n地址:platon-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
