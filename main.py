@@ -58,7 +58,7 @@ def eth1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: eth-node-01\n地址:eth-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-01\n地址: eth-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -69,7 +69,7 @@ def eth2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: eth-node-02\n地址:eth-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: eth-node-02\n地址: eth-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -85,7 +85,7 @@ def bsc1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: bnb-node-01\n地址:bsc-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-01\n地址: bsc-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -96,7 +96,7 @@ def bsc2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: bnb-node-02\n地址:bsc-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: bnb-node-02\n地址: bsc-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -107,7 +107,7 @@ def polygon1(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: polygon-node-01\n地址:polygon-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: polygon-node-01\n地址: polygon-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -118,7 +118,7 @@ def polygon2(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: polygon-node-02\n地址:polygon-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: polygon-node-02\n地址: polygon-node-02-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -129,7 +129,7 @@ def moonbeam(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: moonbeam-node\n地址:moonbeam-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: moonbeam-node\n地址: moonbeam-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -140,7 +140,7 @@ def arbitrum(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: Arbitrum-node\n地址:arbitrum-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: Arbitrum-node\n地址: arbitrum-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -151,7 +151,7 @@ def avax(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: Avax-node\n地址:avax-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: Avax-node\n地址: avax-node-01-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -162,7 +162,7 @@ def opt(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: opt-node\n地址:opt-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: opt-node\n地址: opt-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -173,7 +173,7 @@ def platon(update: Update, context: CallbackContext):
     node_data = get_newest_block(url)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: PlatON-node\n地址:platon-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: PlatON-node\n地址: platon-node-internal.nftscan.com\n最新高度: {block_height}\n出块时间: {block_time}"""
     chat_id = update.effective_chat.id
     logging.info(text)
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -256,6 +256,8 @@ def get_block_height(data):
 def get_block_time(data):
     time = data.get("timestamp", "1000000000")
     timestamp = int(time, base=16)
+    if timestamp > 16590017801:
+        timestamp = timestamp // 1000
     date_time = datetime.fromtimestamp(timestamp, pytz.timezone('Asia/Shanghai'))
     time = date_time.strftime("%Y-%m-%d %H:%M:%S")
     return time
