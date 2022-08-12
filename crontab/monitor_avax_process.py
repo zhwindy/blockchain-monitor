@@ -48,7 +48,7 @@ def avax_monitor():
     record_timestamp = int(str(record_time), base=16)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【解析延迟告警】主链:Avax\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
+    text =f"【解析延迟告警】主链: Avax\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
     print(now, text)
     if MODE == 'dev':
