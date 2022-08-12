@@ -17,10 +17,10 @@ THRESHOLD = 10
 
 
 def get_data():
-    database = "pls_data"
+    database = "opti_data"
     conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from pls_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from opti_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
@@ -48,7 +48,7 @@ def monitor():
     record_timestamp = int(str(record_time), base=16)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【解析延迟告警】主链: Polygon\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n"
+    text =f"【解析延迟告警】主链: Optimism\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
     print(now, text)
     if MODE == 'dev':
