@@ -13,7 +13,7 @@ PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 # 报警阈值
-THRESHOLD = 15
+THRESHOLD = 10
 
 
 def get_eth_data():
@@ -48,7 +48,7 @@ def eth_monitor():
     record_timestamp = int(str(record_time), base=16)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【解析延迟告警】主链:ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟\n请及时关注处理!"
+    text =f"【解析延迟告警】主链: ETH\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
     print(now, text)
     if MODE == 'dev':
