@@ -1,15 +1,12 @@
 # encoding=utf-8
-import pymysql
 import datetime
 import time
 import telegram
 import os
+from db_mysql import get_conn
 import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'DEV')
-HOST = os.getenv('NFT_MYSQL_HOST')
-USER = os.getenv('NFT_MYSQL_USER')
-PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 # 报警阈值
@@ -18,7 +15,7 @@ THRESHOLD = 5
 
 def get_bsc_data():
     database = "glmr_data"
-    conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
+    conn = get_conn(database=database)
     cursor = conn.cursor()
     sql = "select block_number, timestamp from glmr_source_block order by block_number desc limit 1"
     info = {
@@ -48,7 +45,7 @@ def bsc_monitor():
     record_timestamp = int(str(record_time), base=16)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【解析延迟告警】主链: Moonbeam\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
+    text =f"【Tidb 解析延迟告警】主链: Moonbeam\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
     print(now, text)
     if MODE == 'dev':
