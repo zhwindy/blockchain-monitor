@@ -1,16 +1,12 @@
 # encoding=utf-8
-import pymysql
 import datetime
 import time
 import telegram
 import os
+from db_mysql import get_conn
 import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
-HOST = os.getenv('NFT_MYSQL_HOST')
-PORT = 4000
-USER = os.getenv('NFT_MYSQL_USER')
-PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 # 报警阈值
@@ -19,7 +15,7 @@ THRESHOLD = 10
 
 def get_eth_data():
     database = "eth_data"
-    conn = pymysql.connect(host=HOST, port=PORT, user=USER, passwd=PASSWD, db=database, charset='utf8')
+    conn = get_conn(database=database)
     cursor = conn.cursor()
     sql = "select block_number, timestamp from eth_source_block order by block_number desc limit 1"
     info = {
