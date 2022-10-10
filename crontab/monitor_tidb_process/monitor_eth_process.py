@@ -8,6 +8,7 @@ import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 HOST = os.getenv('NFT_MYSQL_HOST')
+PORT = 4000
 USER = os.getenv('NFT_MYSQL_USER')
 PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 GROUP_ID = "-533453366"
@@ -18,7 +19,7 @@ THRESHOLD = 10
 
 def get_eth_data():
     database = "eth_data"
-    conn = pymysql.connect(host=HOST, user=USER, passwd=PASSWD, db=database, charset='utf8')
+    conn = pymysql.connect(host=HOST, port=PORT, user=USER, passwd=PASSWD, db=database, charset='utf8')
     cursor = conn.cursor()
     sql = "select block_number, timestamp from eth_source_block order by block_number desc limit 1"
     info = {
