@@ -23,11 +23,13 @@ def send_news(content, token="601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9
     requests.post(url=url, json=message)
 
 
-def get_newest_block(url):
+def get_newest_block(url, block_number=None):
+    if not block_number:
+        block_number = "latest"
     param = {
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
-        "params": ["latest", False],
+        "params": [block_number, False],
         "id": 1
     }
     try:
