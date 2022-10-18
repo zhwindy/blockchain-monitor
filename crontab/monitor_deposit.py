@@ -6,12 +6,9 @@ import datetime
 import telegram
 import redis
 
-# HOST = os.getenv('NFT_REDIS_HOST')
-# PASSWD = os.getenv('NFT_REDIS_PASSWD')
-# REDIS_KEY os.getenv('NFT_REDIS_KEY')
-HOST = "master.nftscan-cache.osy7hz.apse1.cache.amazonaws.com"
-PASSWD = "redisKgw9uT3YfgOIHtdZK3Mr"
-REDIS_KEY = "tidb:nft:dector:payment:blockNumber"
+HOST = os.getenv('NFT_REDIS_HOST')
+PASSWD = os.getenv('NFT_REDIS_PASSWD')
+REDIS_KEY = os.getenv('NFT_REDIS_KEY')
 DB = 4
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
