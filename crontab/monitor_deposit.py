@@ -12,7 +12,7 @@ REDIS_KEY = os.getenv('NFT_REDIS_KEY')
 DB = 4
 GROUP_ID = "-533453366"
 TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
-NODE_URL = "http://eth-node-01-internal.nftscan.com:40000"
+NODE_URL = "https://mainnet.infura.io/v3/4350bf423f3e4db7ae62b229c9fb3030"
 # 报警阈值
 THRESHOLD = 10
 
