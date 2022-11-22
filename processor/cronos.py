@@ -16,10 +16,11 @@ def get_block_by_number(block_number):
         "id": 1
     }
     try:
-        res = requests.post(RPC_URL, json=param, timeout=20)
+        res = requests.post(RPC_URL, json=param)
         result = res.json()
         data = result.get("result", {})
     except Exception as e:
+        print(e)
         data = {}
     return data
 
@@ -32,10 +33,11 @@ def get_tx_receipt_by_hash(tx_hash):
         "id": 1
     }
     try:
-        res = requests.post(RPC_URL, json=param, timeout=20)
+        res = requests.post(RPC_URL, json=param)
         result = res.json()
         data = result.get("result", {})
     except Exception as e:
+        print(e)
         data = {}
     return data
 
@@ -52,3 +54,7 @@ def test_getblock():
         transactions = block_info.get("transactions")
         print(f"block_num: {num}, transactions: {transactions}")
         num += 1
+
+
+if __name__ == "__main__":
+    test_getblock()
