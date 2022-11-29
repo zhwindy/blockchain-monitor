@@ -1,0 +1,16 @@
+[Unit]
+  Description=lighthouse-node
+  StartLimitIntervalSec=600
+  StartLimitBurst=5
+
+[Service]
+  Type=simple
+  User=ubuntu
+  Restart=on-failure
+  RestartSec=60s
+  ExecStart=/bin/bash /data/client/lighthouse.sh
+  KillSignal=SIGINT
+  TimeoutStopSec=120
+
+[Install]
+  WantedBy=multi-user.target
