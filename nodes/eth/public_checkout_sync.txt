@@ -1,0 +1,1 @@
+https://eth-clients.github.io/checkpoint-sync-endpoints/
