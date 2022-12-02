@@ -1,0 +1,33 @@
+# 开启IPFS文件上传需要更改的配置
+
+# 将Gateway配置
+"Gateway": "/ip4/127.0.0.1/tcp/8080"
+# 修改为
+"Gateway": "/ip4/0.0.0.0/tcp/8080"
+
+# HTTP请求头配置
+"HTTPHeaders": {
+   "Access-Control-Allow-Headers": [
+      "X-Requested-With",
+      "Access-Control-Expose-Headers",
+      "Range"
+   ],
+   "Access-Control-Expose-Headers": [
+      "Location",
+      "Ipfs-Hash"
+   ],
+   "Access-Control-Allow-Methods": [
+      "POST",
+      "GET"
+   ],
+   "Access-Control-Allow-Origin": [
+      "*"
+   ],
+   "X-Special-Header": [
+      "Access-Control-Expose-Headers: Ipfs-Hash"
+   ]
+},
+"RootRedirect": "",
+"Writable": true,
+"PathPrefixes": [],
+"APICommands": []
