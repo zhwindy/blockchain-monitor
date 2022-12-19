@@ -17,7 +17,7 @@ def get_sol_data():
     database = "sol_data"
     conn = get_conn(database=database)
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from avax_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from sol_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
