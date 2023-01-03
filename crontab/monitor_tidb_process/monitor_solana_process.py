@@ -40,12 +40,13 @@ def solana_monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    record_timestamp = int(record_time.timestamp())
+    local_record_time = record_time - datetime.timedelta(hours=8)
+    record_timestamp = int(local_record_time.timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【Tidb 解析延迟告警】主链: Solana\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
-    print(now, text)
+    print(text)
     if MODE == 'dev':
         return None
     if int(diff_min) > THRESHOLD:
