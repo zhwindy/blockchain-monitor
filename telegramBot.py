@@ -52,45 +52,40 @@ def keyboard_callback(update: Update, context: CallbackContext):
 
 def moonbeam(update: Update, context: CallbackContext):
     url = "http://moonbeam-node-internal.nftscan.com:30335"
-    name = "moonbeam-node"
-    address = "moonbeam-node-internal.nftscan.com"
-    text = get_node_message(url, name=name, address=address)
+    name = "moonbeam-node-internal"
+    text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def arbitrum(update: Update, context: CallbackContext):
     url = "http://arbitrum-node-internal.nftscan.com:8547"
-    name = "arbitrum-node"
-    address = "arbitrum-node-internal.nftscan.com"
-    text = get_node_message(url, name=name, address=address)
+    name = "arbitrum-node-internal"
+    text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def avax(update: Update, context: CallbackContext):
     url = "http://avax-node-01-internal.nftscan.com:9650/ext/bc/C/rpc"
-    name = "avax-node"
-    address = "avax-node-01-internal.nftscan.com"
-    text = get_node_message(url, name=name, address=address)
+    name = "avax-node-01-internal"
+    text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def opt(update: Update, context: CallbackContext):
     url = "http://opt-node-internal.nftscan.com:9991"
-    name = "opt-node"
-    address = "opt-node-internal"
-    text = get_node_message(url, name=name, address=address)
+    name = "opt-node-internal"
+    text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
 def platon(update: Update, context: CallbackContext):
     url = "http://platon-node-internal.nftscan.com:8545"
-    name = "PlatON-node"
-    address = "platon-node-internal.nftscan.com"
-    text = get_node_message(url, name=name, address=address)
+    name = "platon-node-internal"
+    text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
 
@@ -105,14 +100,14 @@ def unknown(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
-def get_node_message(endpoint, name='nftscan', address=None):
+def get_node_message(endpoint, name='nftscan'):
     """
     提供节点接口
     """
     node_data = get_newest_block(endpoint)
     block_height = get_block_height(node_data)
     block_time = get_block_time(node_data)
-    text = f"节点: {name}\n地址: {address}\n最新高度: {block_height}\n出块时间: {block_time}"""
+    text = f"节点: {name}\n最新高度: {block_height}\n出块时间: {block_time}"""
     logging.info(text)
     return text
 
