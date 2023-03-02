@@ -2,12 +2,10 @@
 import requests
 from datetime import datetime
 
-DingDing = "https://oapi.dingtalk.com/robot/send?access_token={token}"
-
 
 def send_news(content, token="601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9a6b473397b0bd3"):
     """
-    发送通知
+    发送钉钉通知
     """
     message = {
         "at": {
@@ -18,7 +16,10 @@ def send_news(content, token="601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9
         },
         "msgtype": "text"
     }
-    url = DingDing.format(token=token)
+
+    ding_ding = "https://oapi.dingtalk.com/robot/send?access_token={token}"
+
+    url = ding_ding.format(token=token)
     requests.post(url=url, json=message)
 
 
