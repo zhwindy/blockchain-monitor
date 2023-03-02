@@ -90,6 +90,38 @@ def platon(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def cronos(update, context):
+    url = "http://cronos-node-internal.nftscan.com:8545"
+    name = "cronos-node-internal"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def ftm(update, context):
+    url = "http://ftm-node-internal.nftscan.com:8080"
+    name = "ftm-node-internal"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def xdai(update, context):
+    url = "http://xdai-node-internal.nftscan.com:8080"
+    name = "xdai-node-internal"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
+def aptos(update, context):
+    url = "http://aptos-node-internal.nftscan.com:8080"
+    name = "aptos-node-internal"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def about(update: Update, context: CallbackContext):
     text = "visit: https://nftscan.com/aboutus"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
@@ -120,6 +152,9 @@ arbi_handler = CommandHandler('arbi', arbitrum)
 avax_handler = CommandHandler('avax', avax)
 opt_handler = CommandHandler('opt', opt)
 platon_handler = CommandHandler('platon', platon)
+cro_handler = CommandHandler('cro', cronos)
+ftm_handler = CommandHandler('ftm', ftm)
+xdai_handler = CommandHandler('xdai', xdai)
 help_handler = CommandHandler('help', about)
 unknown_handler = MessageHandler(Filters.command, unknown)
 
@@ -131,6 +166,9 @@ dispatcher.add_handler(arbi_handler)
 dispatcher.add_handler(avax_handler)
 dispatcher.add_handler(opt_handler)
 dispatcher.add_handler(platon_handler)
+dispatcher.add_handler(cro_handler)
+dispatcher.add_handler(ftm_handler)
+dispatcher.add_handler(xdai_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(unknown_handler)
 dispatcher.add_handler(CallbackQueryHandler(keyboard_callback))
