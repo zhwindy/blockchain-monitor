@@ -39,7 +39,6 @@ def get_block_time(data):
     return time
 
 
-
 def send_news(content, token="601e6864aa1dcd0e07e1fb61227b114a32ebfc9c2c335689b9a6b473397b0bd3"):
     """
     发送钉钉通知
