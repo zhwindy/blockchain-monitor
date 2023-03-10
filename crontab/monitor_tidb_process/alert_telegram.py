@@ -1,8 +1,9 @@
 #encoding=utf-8
+import os
 import telegram
 
-GROUP_ID = "-533453366"
-BOT_TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
+GROUP_ID = os.getenv('GROUP_ID', None)
+BOT_TOKEN = os.getenv('BOT_TOKEN', None)
 
 
 def alert(message):
@@ -14,5 +15,5 @@ def alert(message):
 
 
 if __name__ == "__main__":
-    text =f"【Tidb 解析延迟告警】主链: BTC\n已解析高度: 1\n当前延迟约: 0分钟"
+    text = "测试BCT"
     alert(text)
