@@ -15,6 +15,8 @@ def sendMail(message, subject, to_addrs):
     :param to_addrs: str 实际收件人
     :param cc_show: str 抄送人显示，不起实际作用，多个抄送人用','隔开如："xxx,xxxx"
     '''
+    if not MAIL_USER:
+        return
     # 邮件内容
     msg = MIMEText(message, 'plain', _charset="utf-8")
     # 邮件主题描述
@@ -32,7 +34,7 @@ def sendMail(message, subject, to_addrs):
 
 def send_email_alert(chain, block, delay):
     message = f"【数据解析延迟】主链: {chain} \n已解析高度: {block} \n当前延迟约: {delay}分钟"
-    subject = "【延迟告警】【{chain}】【延迟{delay}分钟】"
+    subject = f"【延迟告警】【{chain}】【延迟{delay}分钟】"
     to_addrs = "842076364@qq.com, 919009082@qq.com, pengfei@nftscan.com, even366@qq.com, 841048524@qq.com, lewis@nftscan.com, 2532986201@qq.com"
     sendMail(message, subject, to_addrs)
 
