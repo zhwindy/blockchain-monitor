@@ -1,7 +1,6 @@
 # encoding=utf-8
 import datetime
 import time
-import telegram
 import os
 from db_mysql import get_conn
 from alert_telegram import alert

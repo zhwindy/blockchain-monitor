@@ -1,5 +1,4 @@
 #encoding=utf-8
-import os
 import telegram
 
 GROUP_ID = "-533453366"
@@ -12,7 +11,6 @@ def alert(message):
     """
     bot = telegram.Bot(token=BOT_TOKEN)
     bot.send_message(text=message, chat_id=GROUP_ID)
-    bot.log_out()
 
 
 if __name__ == "__main__":
