@@ -4,6 +4,7 @@ import time
 import os
 from db_mysql import get_conn
 from alert_telegram import alert
+from alert_email import send_email_alert
 import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'DEV')
@@ -50,6 +51,7 @@ def monitor():
         return None
     if int(diff_min) > THRESHOLD:
         alert(text)
+        send_email_alert("Arbitrum", block_number, diff_min)
 
 
 if __name__ == "__main__":
