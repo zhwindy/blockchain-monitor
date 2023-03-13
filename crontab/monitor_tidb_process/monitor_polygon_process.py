@@ -1,14 +1,13 @@
 # encoding=utf-8
 import datetime
 import time
-import telegram
 import os
 from db_mysql import get_conn
+from alert_telegram import alert
+from alert_email import send_email_alert
 import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'DEV')
-GROUP_ID = "-533453366"
-TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
 # 报警阈值
 THRESHOLD = 10
 
@@ -51,8 +50,8 @@ def monitor():
     if MODE == 'dev':
         return None
     if int(diff_min) > THRESHOLD:
-        bot = telegram.Bot(token=TOKEN)
-        bot.send_message(text=text, chat_id=GROUP_ID)
+        alert(text)
+        send_email_alert("Polygon", block_number, diff_min)
 
 
 if __name__ == "__main__":
