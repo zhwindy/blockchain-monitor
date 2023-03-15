@@ -13,6 +13,7 @@ def sendMail(message, subject, to_addrs):
     :param Subject: str 邮件主题描述
     '''
     if not MAIL_USER:
+        print("email send failed")
         return
     msg = MIMEText(message, 'plain', _charset="utf-8")
     # 邮件主题描述
@@ -31,6 +32,7 @@ def send_email_alert(chain, block, delay):
     message = f"【数据解析延迟】主链: {chain} \n已解析区块高度: {block} \n当前延迟约: {delay}分钟"
     to_addrs = "842076364@qq.com, 919009082@qq.com, pengfei@nftscan.com, even366@qq.com, 841048524@qq.com, lewis@nftscan.com, 2532986201@qq.com"
     sendMail(message, subject, to_addrs)
+    print("email send success")
 
 
 if __name__ == "__main__":
