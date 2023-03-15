@@ -10,8 +10,12 @@ def alert(message):
     """
     send message to telegram group
     """
+    if not GROUP_ID or not BOT_TOKEN:
+        print("telegram msg send failed")
+        return None
     bot = telegram.Bot(token=BOT_TOKEN)
     bot.send_message(text=message, chat_id=GROUP_ID)
+    print("telegram msg send success")
 
 
 if __name__ == "__main__":
