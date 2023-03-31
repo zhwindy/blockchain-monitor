@@ -1,18 +1,18 @@
 # encoding=utf-8
 import os
 import time
-from utils import rpc
+import requests
 import datetime
-import telegram
 import redis
+from alert_telegram import alert
+from alert_email import send_email_alert
 
+
+NODE_URL = os.getenv('NODE_URL')
 HOST = os.getenv('NFT_REDIS_HOST')
 PASSWD = os.getenv('NFT_REDIS_PASSWD')
 REDIS_KEY = os.getenv('NFT_REDIS_KEY')
 DB = 4
-GROUP_ID = "-533453366"
-TOKEN = "5108847036:AAEj6CsAvF2NyBTjDwvrAt56MMimupGRofs"
-NODE_URL = "https://mainnet.infura.io/v3/4350bf423f3e4db7ae62b229c9fb3030"
 # 报警阈值
 THRESHOLD = 10
 
@@ -27,6 +27,24 @@ def get_depoist_block_data():
     return block_number
 
 
+def get_newest_block(url, block_number=None):
+    if not block_number:
+        block_number = "latest"
+    param = {
+        "jsonrpc": "2.0",
+        "method": "eth_getBlockByNumber",
+        "params": [block_number, False],
+        "id": 1
+    }
+    try:
+        res = requests.post(url, json=param, timeout=10)
+        result = res.json()
+        data = result.get("result", {})
+    except Exception as e:
+        data = {}
+    return data
+
+
 def monitor():
     process_number = get_depoist_block_data()
     if not process_number:
@@ -34,7 +52,7 @@ def monitor():
         diff_min = 10000
     else:
         process_number_hex = hex(process_number)
-        node_block_data = rpc.get_newest_block(NODE_URL, block_number=process_number_hex)
+        node_block_data = get_newest_block(NODE_URL, block_number=process_number_hex)
         if not node_block_data:
             text = f"【用户充值监控延迟告警】主链ETH用户充值\n已解析区块的信息获取失败, 请及时检查!"
             diff_min = 10000
@@ -52,8 +70,8 @@ def monitor():
                 now = str(datetime.datetime.now())
                 print(now, text)
     if int(diff_min) >= THRESHOLD:
-        bot = telegram.Bot(token=TOKEN)
-        bot.send_message(text=text, chat_id=GROUP_ID)
+        alert(text)
+        send_email_alert("ETH充值", 1, diff_min)
 
 
 if __name__ == '__main__':
