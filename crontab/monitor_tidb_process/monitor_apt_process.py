@@ -15,7 +15,7 @@ def get_data():
     database = "aptos_data"
     conn = get_conn(database=database)
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from gnosis_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from aptos_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
