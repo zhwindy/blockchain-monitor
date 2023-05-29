@@ -69,7 +69,7 @@ def monitor():
     print(text)
     if MODE == 'dev':
         return None
-    if diff_block > 0:
+    if (diff_min > THRESHOLD) and (diff_block > 0):
         alert(text)
         send_email_alert("BTC", block_number, diff_min)
 
