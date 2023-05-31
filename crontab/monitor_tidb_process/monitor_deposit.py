@@ -12,7 +12,7 @@ NODE_URL = os.getenv('NODE_URL')
 HOST = os.getenv('NFT_REDIS_HOST')
 PASSWD = os.getenv('NFT_REDIS_PASSWD')
 REDIS_KEY = os.getenv('NFT_REDIS_KEY')
-DB = 4
+DB = 0
 # 报警阈值
 THRESHOLD = 10
 
