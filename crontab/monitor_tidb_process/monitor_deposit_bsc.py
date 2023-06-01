@@ -23,7 +23,7 @@ def get_depoist_block_data():
         block_number = int(rt.get(REDIS_KEY), base=10)
     except Exception as e:
         print(e)
-        block_number = None
+        block_number = 0
     return block_number
 
 
@@ -48,30 +48,30 @@ def get_newest_block(url, block_number=None):
 def monitor():
     process_number = get_depoist_block_data()
     if not process_number:
-        text = f"【用户充值监控延迟告警】主链BSC用户充值\n已解析高度获取失败, 请及时检查!"
+        text = f"【用户充值监测延迟告警】主链:BSC\n已解析高度获取失败, 请及时检查!"
         diff_min = 10000
     else:
         process_number_hex = hex(process_number)
         node_block_data = get_newest_block(BSC_NODE_URL, block_number=process_number_hex)
         if not node_block_data:
-            text = f"【用户充值监控延迟告警】主链BSC用户充值\n已解析区块的信息获取失败, 请及时检查!"
+            text = f"【用户充值监测延迟告警】主链:BSC\n已解析区块的信息获取失败, 请及时检查!"
             diff_min = 10000
         else:
             block_timestamp_hex = node_block_data.get("timestamp")
             if not block_timestamp_hex:
-                text = f"【用户充值监控延迟告警】主链BSC用户充值\n已解析区块的出块时间失败, 请及时检查!"
+                text = f"【用户充值监测延迟告警】主链:BSC\n已解析区块的出块时间失败, 请及时检查!"
                 diff_min = 10000
             else:
                 now_timestamp = int(time.time())
                 block_timestamp = int(str(block_timestamp_hex), base=16)
                 diff_seconds = max(0, now_timestamp-block_timestamp)
                 diff_min = diff_seconds // 60
-                text =f"【用户充值监控延迟告警】主链BSC用户充值\n已解析高度: {process_number}\n当前延迟约: {diff_min}分钟"
+                text =f"【用户充值监控延迟告警】主链:BSC\n已解析高度: {process_number}\n当前延迟约: {diff_min}分钟"
                 now = str(datetime.datetime.now())
                 print(now, text)
     if int(diff_min) >= THRESHOLD:
         alert(text)
-        send_email_alert("BSC充值", 1, diff_min)
+        send_email_alert("BSC充值", process_number, diff_min)
 
 
 if __name__ == '__main__':
