@@ -22,7 +22,7 @@ def start(update: Update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
-def eth(update: Update, context: CallbackContext):
+def eth_bak(update: Update, context: CallbackContext):
     """
     请使用命令: /eth1 or /eth2
     """
@@ -50,9 +50,17 @@ def keyboard_callback(update: Update, context: CallbackContext):
         eth2(update, context)
 
 
+def eth(update: Update, context: CallbackContext):
+    url = "http://eth-node-internal.nftscan.com:9090"
+    name = "eth-node"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def moonbeam(update: Update, context: CallbackContext):
     url = "http://moonbeam-node-internal.nftscan.com:30335"
-    name = "moonbeam-node-internal"
+    name = "moonbeam-node"
     text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
@@ -128,7 +136,7 @@ def about(update: Update, context: CallbackContext):
 
 
 def unknown(update: Update, context: CallbackContext):
-    text = "Sorry, I didn't understand that command."
+    text = "不支持的命令,请重新输入"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 
