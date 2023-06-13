@@ -83,8 +83,8 @@ def avax(update: Update, context: CallbackContext):
 
 
 def opt(update: Update, context: CallbackContext):
-    url = "http://opt-node-internal.nftscan.com:9991"
-    name = "opt-node-internal"
+    url = "http://opt-node-internal.nftscan.com:8545"
+    name = "opt-node"
     text = get_node_message(url, name=name)
     chat_id = update.effective_chat.id
     context.bot.send_message(chat_id=chat_id, text=text)
