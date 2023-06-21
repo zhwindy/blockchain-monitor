@@ -9,7 +9,7 @@ import pytz
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 # 报警阈值
-THRESHOLD = 30
+THRESHOLD = 60
 
 
 def get_data():
