@@ -11,7 +11,7 @@ MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 BTC_U = os.getenv('BTC_U')
 BTC_P = os.getenv('BTC_P')
 # 报警阈值
-THRESHOLD = 30
+THRESHOLD = 60
 
 
 def get_data():
@@ -69,7 +69,7 @@ def monitor():
     print(text)
     if MODE == 'dev':
         return None
-    if (diff_min > THRESHOLD) and (diff_block > 1):
+    if (diff_min > THRESHOLD) and (diff_block > 2):
         alert(text)
         send_email_alert("BTC", block_number, diff_min)
 
