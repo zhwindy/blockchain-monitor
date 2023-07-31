@@ -48,7 +48,7 @@ def monitor():
         return None
     if int(diff_min) > THRESHOLD:
         alert(text)
-        send_email_alert("Gnosis", block_number, diff_min)
+        send_email_alert("Aptos", block_number, diff_min)
 
 
 if __name__ == "__main__":
