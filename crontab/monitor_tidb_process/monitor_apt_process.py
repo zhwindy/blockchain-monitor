@@ -8,7 +8,7 @@ from alert_email import send_email_alert
 
 MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 # 报警阈值
-THRESHOLD = 5
+THRESHOLD = 10
 
 
 def get_data():
@@ -38,7 +38,7 @@ def monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    record_timestamp = int(str(record_time), base=16)
+    record_timestamp = int(int(record_time) // 1000000)
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【Tidb 解析延迟告警】主链: Aptos\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
