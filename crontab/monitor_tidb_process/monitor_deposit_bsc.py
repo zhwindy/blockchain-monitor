@@ -49,18 +49,18 @@ def monitor():
     process_number = get_depoist_block_data()
     if not process_number:
         text = f"【用户充值监测延迟告警】主链:BSC\n从redis查询已解析高度失败, 请及时检查!"
-        diff_min = 10000
+        diff_min = 1000
     else:
         process_number_hex = hex(process_number)
         node_block_data = get_newest_block(BSC_NODE_URL, block_number=process_number_hex)
         if not node_block_data:
             text = f"【用户充值监测延迟告警】主链:BSC\n通过节点查询已解析区块的信息失败, 请及时检查!"
-            diff_min = 10000
+            diff_min = 1
         else:
             block_timestamp_hex = node_block_data.get("timestamp")
             if not block_timestamp_hex:
-                text = f"【用户充值监测延迟告警】主链:BSC\n获取已解析区块的出块时间失败, 请及时检查!"
-                diff_min = 10000
+                text = f"【用户充值监测延迟告警】主链:BSC\n通过节点查询已解析区块的出块时间失败, 请检查节点问题!"
+                diff_min = 1000
             else:
                 now_timestamp = int(time.time())
                 block_timestamp = int(str(block_timestamp_hex), base=16)
