@@ -15,7 +15,7 @@ THRESHOLD = 60
 
 
 def get_data():
-    database = "bitcoin_data"
+    database = "btc_data"
     conn = get_conn(database=database)
     cursor = conn.cursor()
     sql = "select block_number, timestamp from btc_source_block order by block_number desc limit 1"
