@@ -130,6 +130,14 @@ def aptos(update, context):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def base(update, context):
+    url = "http://base-node.nftscan.com:8545"
+    name = "base-node"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def about(update: Update, context: CallbackContext):
     text = "visit: https://nftscan.com/aboutus"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
@@ -163,6 +171,7 @@ platon_handler = CommandHandler('platon', platon)
 cro_handler = CommandHandler('cro', cronos)
 ftm_handler = CommandHandler('ftm', ftm)
 xdai_handler = CommandHandler('xdai', xdai)
+base_handler = CommandHandler('base', base)
 help_handler = CommandHandler('help', about)
 unknown_handler = MessageHandler(Filters.command, unknown)
 
@@ -177,6 +186,7 @@ dispatcher.add_handler(platon_handler)
 dispatcher.add_handler(cro_handler)
 dispatcher.add_handler(ftm_handler)
 dispatcher.add_handler(xdai_handler)
+dispatcher.add_handler(base_handler)
 dispatcher.add_handler(help_handler)
 dispatcher.add_handler(unknown_handler)
 dispatcher.add_handler(CallbackQueryHandler(keyboard_callback))
