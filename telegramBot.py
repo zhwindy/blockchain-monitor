@@ -138,6 +138,14 @@ def base(update, context):
     context.bot.send_message(chat_id=chat_id, text=text)
 
 
+def linea(update, context):
+    url = "http://linea-node.nftscan.com:8545"
+    name = "linea-node"
+    text = get_node_message(url, name=name)
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=text)
+
+
 def about(update: Update, context: CallbackContext):
     text = "visit: https://nftscan.com/aboutus"
     context.bot.send_message(chat_id=update.effective_chat.id, text=text)
