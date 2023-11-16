@@ -43,7 +43,7 @@ def solana_monitor():
     record_timestamp = int(local_record_time.timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
-    text =f"【Tidb 解析延迟告警】主链: Solana\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
+    text =f"【解析延迟告警】主链: Solana\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
     now = str(datetime.datetime.now())
     print(text)
     if MODE == 'dev':
