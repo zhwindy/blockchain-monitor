@@ -10,6 +10,7 @@ from alert_email import send_email_alert
 MODE = os.getenv('NFT_MONITOR_MODE', 'dev')
 BTC_U = os.getenv('BTC_U')
 BTC_P = os.getenv('BTC_P')
+BTC_NODE_URL = os.getenv('BTC_NODE_URL')
 # 报警阈值
 THRESHOLD = 60
 
@@ -39,14 +40,13 @@ def get_block_height():
     """
     查询当前最新高度
     """
-    url = f"http://{BTC_U}:{BTC_P}@172.31.22.119:8080"
     params = {
         "jsonrpc": "2.0",
         "id":"1",
         "method": "getblockchaininfo",
         "params": []
     }
-    rep = requests.post(url=url, json=params, timeout=20)
+    rep = requests.post(url=BTC_NODE_URL, json=params, timeout=20)
     if rep.status_code == 200:
         rt_data = rep.json()
         rt = rt_data.get("result", {})
@@ -65,7 +65,7 @@ def monitor():
     diff_min = diff_seconds // 60
     new_height = get_block_height()
     diff_block = new_height - block_number
-    text =f"【Tidb 解析延迟告警】主链: BTC\n已解析高度: {block_number}\n当前最新高度: {new_height}\n当前延迟约: {diff_min}分钟"
+    text =f"【解析延迟告警】主链: BTC\n已解析高度: {block_number}\n当前最新高度: {new_height}\n当前延迟约: {diff_min}分钟"
     print(text)
     if MODE == 'dev':
         return None
