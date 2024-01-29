@@ -3,7 +3,7 @@ import os
 import pymysql
 
 HOST = os.getenv('NFT_MYSQL_HOST')
-PORT = os.getenv('NFT_MYSQL_PORT', 4000)
+PORT = int(os.getenv('NFT_MYSQL_PORT', 4000))
 USER = os.getenv('NFT_MYSQL_USER')
 PASSWD = os.getenv('NFT_MYSQL_PASSWD')
 
