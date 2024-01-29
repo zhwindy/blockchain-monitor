@@ -39,7 +39,8 @@ def solana_monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    local_record_time = record_time - datetime.timedelta(hours=8)
+    # local_record_time = record_time - datetime.timedelta(hours=8)
+    local_record_time = record_time
     record_timestamp = int(local_record_time.timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
