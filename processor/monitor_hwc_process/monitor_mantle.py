@@ -12,10 +12,10 @@ THRESHOLD = 10
 
 
 def get_data():
-    database = "mantle_data"
+    database = "mnt_data"
     conn = get_conn(database=database)
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from mantle_source_block order by block_number desc limit 1"
+    sql = "select block_number, timestamp from mnt_source_block order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
