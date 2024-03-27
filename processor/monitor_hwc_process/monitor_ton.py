@@ -38,7 +38,7 @@ def monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    record_timestamp = int(str(record_time), base=16)
+    record_timestamp = int(record_time.timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     text =f"【HWC解析延迟告警】主链: TON\n已解析高度: {block_number}\n当前延迟约: {diff_min}分钟"
