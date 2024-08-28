@@ -19,7 +19,7 @@ def get_data():
     database = "btc_data"
     conn = get_conn(database=database)
     cursor = conn.cursor()
-    sql = "select block_number, timestamp from rune_transaction order by block_number desc limit 1"
+    sql = "select block_number, create_time from rune_transaction order by block_number desc limit 1"
     info = {
         "block_number": 0,
         "create_time": 0
