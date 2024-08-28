@@ -60,7 +60,7 @@ def monitor():
     now_timestamp = int(time.time())
     block_number = info.get("block_number")
     record_time = info.get("create_time")
-    record_timestamp = int(record_time)
+    record_timestamp = int(record_time.timestamp())
     diff_seconds = max(0, now_timestamp-record_timestamp)
     diff_min = diff_seconds // 60
     new_height = get_block_height()
